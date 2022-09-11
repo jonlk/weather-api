@@ -29,7 +29,7 @@ func (f *Forecaster) GenerateForecast(office *string, gridX *int, gridY *int, ou
 
 		if body, err := io.ReadAll(resp.Body); err == nil {
 
-			weather := WeatherData{}
+			weather := Forecast{}
 
 			json.Unmarshal([]byte(body), &weather)
 
