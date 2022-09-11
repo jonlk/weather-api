@@ -1,6 +1,6 @@
 package weather
 
-type WeatherData struct {
+type Forecast struct {
 	Properties Properties
 }
 

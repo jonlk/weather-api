@@ -10,7 +10,7 @@ func newPrinter() *Printer {
 	return &Printer{}
 }
 
-func (p *Printer) printShortOutput(weather *WeatherData) {
+func (p *Printer) printShortOutput(weather *Forecast) {
 
 	fmt.Printf("\nForecast last updated at %v\n\n",
 		weather.Properties.Updated)
@@ -24,7 +24,7 @@ func (p *Printer) printShortOutput(weather *WeatherData) {
 	}
 }
 
-func (p *Printer) printLongOutput(weather *WeatherData) {
+func (p *Printer) printLongOutput(weather *Forecast) {
 
 	fmt.Printf("\nForecast last updated at %v\n\n",
 		weather.Properties.Updated)
