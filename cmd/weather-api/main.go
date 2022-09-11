@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"github/jonlk/weather-api/pkg/weather"
 	"io"
 	"net/http"
 )
@@ -21,7 +22,7 @@ func main() {
 		return
 	}
 
-	weather := WeatherData{}
+	weather := weather.WeatherData{}
 
 	if body, err := io.ReadAll(resp.Body); err == nil {
 		json.Unmarshal([]byte(body), &weather)

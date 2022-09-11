@@ -1,4 +1,4 @@
-package main
+package weather
 
 type WeatherData struct {
 	Properties Properties
