@@ -7,9 +7,13 @@ import (
 	"net/http"
 )
 
-const baseUrl = "https://api.weather.gov/gridpoints/RAH/74,58/forecast"
+func GenerateForecast(office *string, gridX *int, gridY *int) {
 
-func GenerateForecast() {
+	baseUrl := "https://api.weather.gov/gridpoints/" +
+		*office + "/" +
+		fmt.Sprint(*gridX) + "," +
+		fmt.Sprint(*gridY) +
+		"/forecast"
 
 	req, _ := http.NewRequest("GET", baseUrl, nil)
 
