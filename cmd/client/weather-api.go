@@ -17,7 +17,7 @@ func main() {
 	}
 
 	office := "RAH"
-	gridX := 74
+	gridX := 73
 	gridY := 58
 
 	f := weather.NewForecaster()
