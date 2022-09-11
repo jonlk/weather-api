@@ -17,5 +17,6 @@ func main() {
 	gridX := 74
 	gridY := 58
 
-	weather.GenerateForecast(&office, &gridX, &gridY, os.Args[1])
+	f := weather.NewForecaster()
+	f.GenerateForecast(&office, &gridX, &gridY, os.Args[1])
 }

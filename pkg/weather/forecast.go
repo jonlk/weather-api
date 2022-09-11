@@ -7,7 +7,13 @@ import (
 	"net/http"
 )
 
-func GenerateForecast(office *string, gridX *int, gridY *int, outputType string) {
+type Forecaster struct{}
+
+func NewForecaster() *Forecaster {
+	return &Forecaster{}
+}
+
+func (f *Forecaster) GenerateForecast(office *string, gridX *int, gridY *int, outputType string) {
 
 	baseUrl := "https://api.weather.gov/gridpoints/" +
 		*office + "/" +
@@ -25,13 +31,15 @@ func GenerateForecast(office *string, gridX *int, gridY *int, outputType string)
 			weather := WeatherData{}
 			json.Unmarshal([]byte(body), &weather)
 
+			p := newPrinter()
+
 			switch outputType {
 			case "short":
-				printShortOutput(&weather)
+				p.printShortOutput(&weather)
 			case "long":
-				printLongOutput(&weather)
+				p.printLongOutput(&weather)
 			default:
-				printShortOutput(&weather)
+				p.printShortOutput(&weather)
 			}
 
 		} else {
@@ -40,25 +48,5 @@ func GenerateForecast(office *string, gridX *int, gridY *int, outputType string)
 
 	} else {
 		fmt.Println(err.Error())
-	}
-}
-
-func printShortOutput(weather *WeatherData) {
-
-	fmt.Printf("\nForecast last updated at %v\n\n", weather.Properties.Updated)
-
-	for _, v := range weather.Properties.Periods {
-		fmt.Printf("%v Temp: %v%v -Forecast: %v\n\n",
-			v.Name,
-			v.Temperature,
-			v.TemperatureUnit,
-			v.ShortForecast)
-	}
-}
-
-func printLongOutput(weather *WeatherData) {
-	fmt.Printf("\nForecast last updated at %v\n\n", weather.Properties.Updated)
-	for _, v := range weather.Properties.Periods {
-		fmt.Printf("%v -Forecast: %v\n\n", v.Name, v.DetailedForecast)
 	}
 }
