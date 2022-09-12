@@ -27,6 +27,8 @@ func (f *Forecaster) GenerateForecast(office *string, gridX *int, gridY *int, ou
 
 	if resp, err := client.Do(req); err == nil {
 
+		defer resp.Body.Close()
+
 		if body, err := io.ReadAll(resp.Body); err == nil {
 
 			weather := Forecast{}
