@@ -6,9 +6,7 @@ import (
 	"os"
 )
 
-// TODO: Need to add an Api call and also look at other features
-//
-//	on the weather.gov api
+// TODO: Need to add an Api call and also look at other features on the weather.gov api
 func main() {
 
 	if len(os.Args) != 2 || (os.Args[1] != "short" && os.Args[1] != "long") {
