@@ -1,3 +1,3 @@
-# Simple Weather Api
+# Simple Weather Client
 
 ## In progress
